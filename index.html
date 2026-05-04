@@ -41,49 +41,10 @@
     z-index: 0;
   }
 
-  /* 左上 */
-  .top-left {
-    position: absolute;
-    top: 32px;
-    left: 48px;
-    z-index: 1;
-    font-family: 'Noto Serif TC', serif;
-    font-size: 15px;
-    font-weight: 300;
-    color: rgba(240,232,220,0.75);
-    letter-spacing: 0.22em;
-    animation: fadeUp 1s cubic-bezier(.16,1,.3,1) 0.1s both;
-  }
-
-  /* 右上 */
-  .top-right {
-    position: absolute;
-    top: 28px;
-    right: 48px;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    animation: fadeUp 1s cubic-bezier(.16,1,.3,1) 0.1s both;
-  }
-
-  .slogan-line {
-    width: 100px;
-    height: 0.5px;
-    background: rgba(240,232,220,0.45);
-  }
-
-  .slogan-img {
-    height: 26px;
-    opacity: 0.82;
-    filter: brightness(1.15);
-  }
-
   /* mobile spacer 桌機隱藏 */
   .mobile-spacer { display: none; }
 
-  /* 左下：標題 + logo
-     寬度固定 260px，這樣三欄從 left: 48+260+160=468px 開始 */
+  /* 左下：標題 + logo */
   .bottom-left {
     position: absolute;
     bottom: 44px;
@@ -199,8 +160,7 @@
     object-fit: contain;
   }
 
-  /* 右下：描述內文
-     right: 48px，寬 260px */
+  /* 右下：描述內文 */
   .desc-block {
     position: absolute;
     bottom: 44px;
@@ -250,24 +210,6 @@
       );
     }
 
-    /* 左上 absolute，不佔 flex 空間 */
-    .top-left {
-      position: absolute;
-      top: 24px;
-      left: 24px;
-      font-size: 12px;
-      color: rgba(240,232,220,0.85);
-    }
-
-    .top-right {
-      position: absolute;
-      top: 24px;
-      right: 24px;
-    }
-
-    .slogan-line { width: 50px; }
-    .slogan-img { height: 14px; }
-
     /* spacer：把標題推到 415px */
     .mobile-spacer {
       display: block;
@@ -309,7 +251,7 @@
 
     .logo-img { height: 26px; }
 
-    /* 三欄資訊：緊接 logo 下方 */
+    /* 三欄資訊 */
     .info-cols {
       position: relative;
       bottom: auto;
@@ -318,7 +260,6 @@
       width: 100%;
       padding: 24px 20px 0;
       margin-bottom: 0;
-      
     }
 
     .info-col {
@@ -334,7 +275,7 @@
     .info-desc { font-size: 10px; }
     .bottle-img { height: 44px; margin-bottom: 6px; }
 
-    /* 描述內文：三欄下方，加大間距讓用戶滑動才看到 */
+    /* 描述內文 */
     .desc-block {
       position: relative;
       bottom: auto;
@@ -357,15 +298,6 @@
 <body>
 
 <div class="banner">
-
-  <div class="top-left">星期六香氛美學</div>
-
-  <div class="top-right">
-    <div class="slogan-line"></div>
-    <img class="slogan-img"
-         src="https://ik.imagekit.io/itssaturday/WEDDING/banner/its-sat-club-slogan.svg"
-         alt="Breath of the moment.">
-  </div>
 
   <div class="mobile-spacer"></div>
 
@@ -404,8 +336,7 @@
       引導每位嘉賓探索嗅覺的樂趣。<br>
       <br>
       在迎賓之時，賓客可親自前來體驗調香，<br>
-      由專人引導，讓每位賓客都能帶走屬於這場愛情故事的香氛。<br>
-      
+      由專人引導，讓每位賓客都能帶走屬於這場愛情故事的香氛。
     </p>
   </div>
 
