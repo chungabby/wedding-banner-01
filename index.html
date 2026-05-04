@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>婚禮調香吧 · It's Saturday Club</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Noto+Serif+TC:wght@300;400&family=Noto+Sans+TC:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #1a1612;
+    font-family: 'Noto Serif TC', serif;
+  }
+
+  /* ══════════════════════════════
+     DESKTOP
+  ══════════════════════════════ */
+  .banner {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-image: url('https://ik.imagekit.io/itssaturday/WEDDING/banner/wedding-banner.jpg');
+    background-size: cover;
+    background-position: center center;
+  }
+
+  .banner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(10,8,5,0.12) 0%,
+      rgba(10,8,5,0) 20%,
+      rgba(10,8,5,0) 45%,
+      rgba(10,8,5,0.5) 72%,
+      rgba(10,8,5,0.78) 100%
+    );
+    z-index: 0;
+  }
+
+  /* 左上 */
+  .top-left {
+    position: absolute;
+    top: 32px;
+    left: 48px;
+    z-index: 1;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(240,232,220,0.75);
+    letter-spacing: 0.22em;
+    animation: fadeUp 1s cubic-bezier(.16,1,.3,1) 0.1s both;
+  }
+
+  /* 右上 */
+  .top-right {
+    position: absolute;
+    top: 28px;
+    right: 48px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    animation: fadeUp 1s cubic-bezier(.16,1,.3,1) 0.1s both;
+  }
+
+  .slogan-line {
+    width: 100px;
+    height: 0.5px;
+    background: rgba(240,232,220,0.45);
+  }
+
+  .slogan-img {
+    height: 26px;
+    opacity: 0.82;
+    filter: brightness(1.15);
+  }
+
+  /* mobile spacer 桌機隱藏 */
+  .mobile-spacer { display: none; }
+
+  /* 左下：標題 + logo
+     寬度固定 260px，這樣三欄從 left: 48+260+160=468px 開始 */
+  .bottom-left {
+    position: absolute;
+    bottom: 44px;
+    left: 48px;
+    z-index: 1;
+    width: 260px;
+    animation: fadeUp 1s cubic-bezier(.16,1,.3,1) 0.25s both;
+  }
+
+  .label-top {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: #eec9ab;
+    letter-spacing: 0.18em;
+    margin-bottom: 6px;
+  }
+
+  .main-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 56px;
+    font-weight: 400;
+    color: #f0e8dc;
+    letter-spacing: 0.12em;
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+
+  .label-bottom {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(240,232,220,0.7);
+    letter-spacing: 0.2em;
+    margin-bottom: 28px;
+  }
+
+  .logo-img {
+    height: 32px;
+    opacity: 0.88;
+    filter: brightness(1.2);
+  }
+
+  /* 中下：三欄
+     left = 48(邊距) + 260(標題寬) + 160(間距) = 468px
+     right = 48(邊距) + 260(描述寬) + 50(間距) = 358px */
+  .info-cols {
+    position: absolute;
+    bottom: 44px;
+    left: 468px;
+    right: 358px;
+    z-index: 1;
+    display: flex;
+    align-items: flex-start;
+    animation: fadeUp 1s cubic-bezier(.16,1,.3,1) 0.4s both;
+  }
+
+  .info-col {
+    flex: 1;
+    padding: 0 24px;
+    text-align: left;
+    border-left: 1px solid rgba(240,232,220,0.3);
+  }
+
+  .info-col:first-child {
+    border-left: none;
+    padding-left: 0;
+  }
+
+  .info-num {
+    font-family: 'Gilda Display', serif;
+    font-size: 36px;
+    font-weight: 400;
+    color: #f0e8dc;
+    letter-spacing: 0.02em;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .info-num-unit {
+    font-size: 17px;
+    opacity: 0.7;
+  }
+
+  .info-sub {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: #eec9ab;
+    line-height: 1.7;
+    letter-spacing: 0.06em;
+    margin-bottom: 10px;
+  }
+
+  .info-desc {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(240,232,220,0.85);
+    line-height: 2;
+    letter-spacing: 0.04em;
+  }
+
+  .info-col-img {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .bottle-img {
+    height: 56px;
+    margin-bottom: 10px;
+    object-fit: contain;
+  }
+
+  /* 右下：描述內文
+     right: 48px，寬 260px */
+  .desc-block {
+    position: absolute;
+    bottom: 44px;
+    right: 48px;
+    z-index: 1;
+    width: 260px;
+    text-align: left;
+    animation: fadeUp 1s cubic-bezier(.16,1,.3,1) 0.5s both;
+  }
+
+  .desc-text {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(240,232,220,0.75);
+    line-height: 2.2;
+    letter-spacing: 0.06em;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ══════════════════════════════
+     MOBILE
+  ══════════════════════════════ */
+  @media (max-width: 767px) {
+
+    .banner {
+      background-image: url('https://ik.imagekit.io/itssaturday/WEDDING/banner/wedding-banner-m.jpg?updatedAt=1777878630812');
+      background-position: center top;
+      background-size: cover;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .banner::after {
+      background: linear-gradient(
+        to bottom,
+        rgba(10,8,5,0) 0%,
+        rgba(10,8,5,0) 30%,
+        rgba(10,8,5,0.15) 48%,
+        rgba(10,8,5,0.55) 62%,
+        rgba(10,8,5,0.82) 100%
+      );
+    }
+
+    /* 左上 absolute，不佔 flex 空間 */
+    .top-left {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      font-size: 12px;
+      color: rgba(240,232,220,0.85);
+    }
+
+    .top-right {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+    }
+
+    .slogan-line { width: 50px; }
+    .slogan-img { height: 14px; }
+
+    /* spacer：把標題推到 415px */
+    .mobile-spacer {
+      display: block;
+      height: 415px;
+      flex-shrink: 0;
+    }
+
+    /* 標題區：置中 */
+    .bottom-left {
+      position: relative;
+      bottom: auto;
+      left: auto;
+      width: auto;
+      padding: 0 28px;
+      margin-bottom: 24px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .label-top {
+      font-size: 15px;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .main-title {
+      font-size: 42px;
+      color: #eec9ab;
+      margin-bottom: 10px;
+    }
+
+    .label-bottom {
+      font-size: 15px;
+      color: #ffffff;
+      margin-bottom: 20px;
+    }
+
+    .logo-img { height: 26px; }
+
+    /* 三欄資訊：緊接 logo 下方 */
+    .info-cols {
+      position: relative;
+      bottom: auto;
+      left: auto;
+      right: auto;
+      width: 100%;
+      padding: 24px 20px 0;
+      margin-bottom: 0;
+      
+    }
+
+    .info-col {
+      padding: 0 10px;
+      flex: 1;
+    }
+
+    .info-col:first-child { padding-left: 0; }
+
+    .info-num { font-size: 24px; margin-bottom: 4px; }
+    .info-num-unit { font-size: 12px; }
+    .info-sub { font-size: 12px; margin-bottom: 6px; }
+    .info-desc { font-size: 10px; }
+    .bottle-img { height: 44px; margin-bottom: 6px; }
+
+    /* 描述內文：三欄下方，加大間距讓用戶滑動才看到 */
+    .desc-block {
+      position: relative;
+      bottom: auto;
+      right: auto;
+      width: auto;
+      text-align: left;
+      margin-top: 56px;
+      padding: 0 28px 64px;
+    }
+
+    .desc-text {
+      font-size: 14px;
+      line-height: 2.4;
+      letter-spacing: 0.04em;
+      color: #ffffff;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="banner">
+
+  <div class="top-left">星期六香氛美學</div>
+
+  <div class="top-right">
+    <div class="slogan-line"></div>
+    <img class="slogan-img"
+         src="https://ik.imagekit.io/itssaturday/WEDDING/banner/its-sat-club-slogan.svg"
+         alt="Breath of the moment.">
+  </div>
+
+  <div class="mobile-spacer"></div>
+
+  <div class="bottom-left">
+    <div class="label-top">全台首創</div>
+    <div class="main-title">婚禮調香吧</div>
+    <div class="label-bottom">最療癒的主題婚禮體驗</div>
+    <img class="logo-img"
+         src="https://ik.imagekit.io/itssaturday/WEDDING/banner/its-sat-club-logo.svg"
+         alt="by It's Saturday Club">
+  </div>
+
+  <div class="info-cols">
+    <div class="info-col">
+      <div class="info-num">3-4<span class="info-num-unit"> hrs</span></div>
+      <div class="info-sub">小時沉浸式服務<br>與專人引導</div>
+      <div class="info-desc">無論是活潑的孩子或害羞的長輩，都能輕鬆完成自己的香氛禮物。</div>
+    </div>
+    <div class="info-col">
+      <div class="info-num">4<span class="info-num-unit"> 款</span></div>
+      <div class="info-sub">客製基底香氛<br>訂製婚禮香氛地圖</div>
+      <div class="info-desc">現場香調自由疊香，讓賓客帶走屬於這場婚禮的記憶。</div>
+    </div>
+    <div class="info-col info-col-img">
+      <img class="bottle-img"
+           src="https://ik.imagekit.io/itssaturday/WEDDING/banner/pic-01.png"
+           alt="香水瓶">
+      <div class="info-sub">客製化視覺與細節</div>
+      <div class="info-desc">完美搭配婚禮風格，美照滿分。</div>
+    </div>
+  </div>
+
+  <div class="desc-block">
+    <p class="desc-text">
+      簡約、優雅、且全齡友善，<br>
+      引導每位嘉賓探索嗅覺的樂趣。<br>
+      <br>
+      在迎賓之時，賓客可親自前來體驗調香，<br>
+      由專人引導，讓每位賓客都能帶走屬於這場愛情故事的香氛。<br>
+      
+    </p>
+  </div>
+
+</div>
+
+</body>
+</html>
